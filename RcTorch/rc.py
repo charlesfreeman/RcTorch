@@ -3375,5 +3375,5 @@ class RcNetwork(nn.Module):
             yfit_norm = self.LinOut(self.extended_states) #self.LinOut.weight.cpu()@self.extended_states.T.cpu() + self.LinOut.bias.cpu()
             #yfit = self._output_stds.cpu()* (yfit_norm)+ self._output_means.cpu()
 
-            self.yfit = self._descale(outputs = yfit_norm, normalize = self._normalize).view(-1, self.n_outputs).detach().numpy()
+            self.yfit = self._descale(outputs = yfit_norm, normalize = self._normalize).view(-1, self.n_outputs).cpu().detach().numpy()
             return self.yfit
